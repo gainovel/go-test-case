@@ -3,7 +3,7 @@
  * @Organization : Copyright © 2023-2024 gainovel.com All Rights Reserved.
  * @Date         : 2024-01-14 16:09:40 星期日
  * @ProductName  : GoLand
- * @PrjectName   : go-examples
+ * @PrjectName   : test-case
  * @File         : examples/tools/common/print/print_any.go
  * @Version      : v0.1.0
  * @Description  : 开发中···
@@ -48,11 +48,24 @@ func (mf *myFmt) DumpPrintln(a ...any) {
 	fmt.Println(mf.horizontal)
 }
 
-func (mf *myFmt) ColorDescPrintln(a any) {
+func (mf *myFmt) VarInitPrintln(a any) {
 	if a == nil {
 		fmt.Println()
 	}
-	color.HiCyan.Printf("%s %v\n", "👇", a)
+	color.HiCyan.Printf("%s 变量初始化：\n", "👇")
+	fmt.Println(mf.horizontal)
+	color.HiGreen.Printf("%v\n", a)
+	fmt.Println(mf.horizontal)
+}
+
+func (mf *myFmt) ColorDescPrintln(a ...any) {
+	if a == nil {
+		fmt.Println()
+	}
+	color.HiCyan.Printf("%s\n", "👇")
+	for i := 0; i < len(a); i++ {
+		color.HiCyan.Printf("%v\n", a[i])
+	}
 }
 
 func (mf *myFmt) KeyValuePrintln(a ...any) {

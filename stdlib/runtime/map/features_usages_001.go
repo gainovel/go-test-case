@@ -3,8 +3,8 @@
  * @Organization : Copyright © 2023-2024 gainovel.com All Rights Reserved.
  * @Date         : 2024/1/10 11:56:06 星期三
  * @ProductName  : GoLand
- * @PrjectName   : go-examples
- * @File         : examples/stdlib/runtime/map/features_usages_001.go
+ * @PrjectName   : test-case
+ * @File         : stdlib/runtime/map/features_usages_001.go
  * @Version      : v0.1.0
  * @Description  : 开发中···
  **/
@@ -69,7 +69,7 @@ func ConcurrentMapWrites() {
 		m1[key] = val
 	}
 
-	targetKey = 100
+	targetKey = 1000
 	targetVal = 10000
 
 	// 开启1000个协程并发写

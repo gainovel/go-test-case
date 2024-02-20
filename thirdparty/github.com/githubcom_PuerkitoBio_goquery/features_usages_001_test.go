@@ -3,7 +3,7 @@
  * @Organization : Copyright © 2023-2024 gainovel.com All Rights Reserved.
  * @Date         : 2024-02-05 14:46:36 星期一
  * @ProductName  : GoLand
- * @PrjectName   : go-examples
+ * @PrjectName   : test-case
  * @File         : examples/thirdparty/github.com/githubcom_PuerkitoBio_goquery/features_usages_001_test.go
  * @Version      : v0.1.0
  * @Description  : 开发中···

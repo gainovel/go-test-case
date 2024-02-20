@@ -3,8 +3,8 @@
  * @Organization : Copyright © 2023-2024 gainovel.com All Rights Reserved.
  * @Date         : 2024/1/10 11:22:46 星期三
  * @ProductName  : GoLand
- * @PrjectName   : go-examples
- * @File         : examples/stdlib/runtime/map/features_usages_001_test.go
+ * @PrjectName   : test-case
+ * @File         : stdlib/runtime/map/features_usages_001_test.go
  * @Version      : v0.1.0
  * @Description  : 开发中···
  **/
@@ -12,81 +12,57 @@
 package map000
 
 import (
-	"fmt"
-	"math/rand"
-	"sync"
 	"testing"
-	"time"
 
-	"github.com/fatih/color"
+	commonprint "gainovel.com/go/testcase/tools/common/print"
+)
+
+var (
+	myfmt = commonprint.MyFmt
 )
 
 func TestName_2024_01_10_11_22_46(t *testing.T) {
-	t.Run("panic: assignment to entry in nil map", func(t *testing.T) {
+	// 多协程同时写会报错concurrent map writes
+	// go test -run TestName_2024_01_10_11_22_46/concurrent_map_write
+	t.Run("concurrent map write", func(t *testing.T) {
+		// 使用windows terminal 在./cmd/main.go测试ConcurrentMapWrites()
+		ConcurrentMapWrites()
+	})
+	// panic的情况👉给nil map添加key-value
+	// go test -run TestName_2024_01_10_11_22_46/assignment_to_entry_in_nil_map
+	t.Run("assignment to entry in nil map", func(t *testing.T) {
 		var (
 			m1 map[int]int
 		)
 		m1[1] = 2
 	})
-	t.Run("concurrent map writes 1", func(t *testing.T) {
+
+	// map 的简单使用
+	// 使用内置函数delete()进行删除
+	// 查询map时，使用逗号模式(val,ok)获取值，避免操作零值，ok表示key是否存在
+	// go test -run TestName_2024_01_10_11_22_46/map_crud
+	t.Run("map crud", func(t *testing.T) {
 		var (
-			m1                   map[int]int
-			wg                   sync.WaitGroup
-			n                    int
-			targetKey, targetVal int
+			m1  map[int]int
+			key int
+			ok  bool
 		)
 		m1 = make(map[int]int)
-		n = 1000
-		for i := 0; i < n; i++ {
-			key := rand.Intn(i+1000) + 100
-			val := rand.Intn(key) + 88
-			m1[key] = val
-		}
-		targetKey = 100
-		targetVal = 10000
-		wg.Add(n)
-		for i := 0; i < n; i++ {
-			go func(j int) {
-				defer wg.Done()
-				m1[targetKey] = targetVal
-			}(i)
-		}
-		wg.Wait()
-		fmt.Println(m1)
-	})
-	t.Run("concurrent map reads 1", func(t *testing.T) {
-		var (
-			m1 map[int]int
-			wg sync.WaitGroup
-			n  int
-		)
-		m1 = make(map[int]int)
-		n = 1000
-		for i := 0; i < n; i++ {
-			key := rand.Intn(i+1000) + 100
-			val := rand.Intn(key) + 88
-			m1[key] = val
-		}
-		wg.Add(n)
-		for i := 0; i < n; i++ {
-			go func(j int) {
-				defer wg.Done()
-				color.New(color.FgHiMagenta).Printf("goroutin %d read start...\n", j)
-				time.Sleep(time.Microsecond * 10)
-				for k, v := range m1 {
-					fmt.Printf("%d:%d ", k, v)
-				}
-				fmt.Println()
-			}(i)
-		}
-		wg.Wait()
-	})
-	t.Run("concurrent map writes 2", func(t *testing.T) {
-		// 使用windows terminal 在./cmd/main.go测试ConcurrentMapReads()
-		ConcurrentMapReads()
-	})
-	t.Run("concurrent map reads 2", func(t *testing.T) {
-		// 使用windows terminal 在./cmd/main.go测试ConcurrentMapWrites()
-		ConcurrentMapWrites()
+		m1[1] = 101
+		m1[2] = 102
+		myfmt.VarInitPrintln(`var (
+	m1 map[int]int
+)`)
+		myfmt.ColorDescPrintln("m1 = make(map[int]int)", "m1[1] = 101", "m1[2] = 102")
+		myfmt.KeyValuePrintln("m1", m1, "len(m1)", len(m1))
+		delete(m1, 1)
+		myfmt.ColorDescPrintln("delete(m1, 1)")
+		myfmt.KeyValuePrintln("m1", m1, "len(m1)", len(m1))
+		key, ok = m1[1]
+		myfmt.ColorDescPrintln("key,ok = m1[1]")
+		myfmt.KeyValuePrintln("m1", m1, "len(m1)", len(m1), "key", key, "ok", ok)
+		key, ok = m1[2]
+		myfmt.ColorDescPrintln("key,ok = m1[2]")
+		myfmt.KeyValuePrintln("m1", m1, "len(m1)", len(m1), "key", key, "ok", ok)
 	})
 }

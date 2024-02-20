@@ -3,7 +3,7 @@
  * @Organization : Copyright © 2023-2024 gainovel.com All Rights Reserved.
  * @Date         : 2024/1/9 15:08:44 星期二
  * @ProductName  : GoLand
- * @PrjectName   : go-examples
+ * @PrjectName   : test-case
  * @File         : examples/leetcode/interview_classic_150_questions_test.go
  * @Version      : v0.1.0
  * @Description  : website https://leetcode.cn/studyplan/top-interview-150/
