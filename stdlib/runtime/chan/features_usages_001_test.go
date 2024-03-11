@@ -27,7 +27,7 @@ func sleepG() {
 }
 func TestName_2024_01_09_14_59_43(t *testing.T) {
 	// chan的基本用法
-	// make 001/chan_crud -f Makefiles/stdlib/runtime/chan.mk
+	// go test -v -run TestName_2024_01_09_14_59_43/chan_crud github.com/gainovel/testcase/stdlib/runtime/chan
 	t.Run("chan crud", func(t *testing.T) {
 		var (
 			ch1 chan int
@@ -73,7 +73,7 @@ func TestName_2024_01_09_14_59_43(t *testing.T) {
 	})
 
 	// 协程读取管道时，阻塞的条件有3个：①管道无缓冲区②管道缓冲区中无数据③管道为nil。
-	// make 001/1.read_no_buf -f Makefiles/stdlib/runtime/chan.mk
+	// go test -v -run TestName_2024_01_09_14_59_43/1.read_no_buf github.com/gainovel/testcase/stdlib/runtime/chan
 	t.Run("1.read no buf", func(t *testing.T) {
 		go sleepG()
 		var (
@@ -84,7 +84,7 @@ func TestName_2024_01_09_14_59_43(t *testing.T) {
 		<-ch1
 		fmt.Println("before return...")
 	})
-	// make 001/2.read_no_data -f Makefiles/stdlib/runtime/chan.mk
+	// go test -v -run TestName_2024_01_09_14_59_43/2.read_no_data github.com/gainovel/testcase/stdlib/runtime/chan
 	t.Run("2.read no data", func(t *testing.T) {
 		go sleepG()
 		var (
@@ -95,7 +95,7 @@ func TestName_2024_01_09_14_59_43(t *testing.T) {
 		<-ch1
 		fmt.Println("before return...")
 	})
-	// make 001/3.read_nil_chan -f Makefiles/stdlib/runtime/chan.mk
+	// go test -v -run TestName_2024_01_09_14_59_43/3.read_nil_chan github.com/gainovel/testcase/stdlib/runtime/chan
 	t.Run("3.read nil chan", func(t *testing.T) {
 		go sleepG()
 		var (
@@ -107,7 +107,7 @@ func TestName_2024_01_09_14_59_43(t *testing.T) {
 	})
 
 	// 协程写入管道时，阻塞的条件有3个：①管道无缓冲区②管道缓冲区已满③管道为nil。
-	// make 001/1.write_no_buf -f Makefiles/stdlib/runtime/chan.mk
+	// go test -v -run TestName_2024_01_09_14_59_43/1.write_no_buf github.com/gainovel/testcase/stdlib/runtime/chan
 	t.Run("1.write no buf", func(t *testing.T) {
 		go sleepG()
 		var (
@@ -118,7 +118,7 @@ func TestName_2024_01_09_14_59_43(t *testing.T) {
 		ch1 <- 1
 		fmt.Println("before return...")
 	})
-	// make 001/2.write_full_data -f Makefiles/stdlib/runtime/chan.mk
+	// go test -v -run TestName_2024_01_09_14_59_43/2.write_full_data github.com/gainovel/testcase/stdlib/runtime/chan
 	t.Run("2.write full data", func(t *testing.T) {
 		go sleepG()
 		var (
@@ -131,7 +131,7 @@ func TestName_2024_01_09_14_59_43(t *testing.T) {
 		ch1 <- 1
 		fmt.Println("before return...")
 	})
-	// 001/3.write_nil_chan -f Makefiles/stdlib/runtime/chan.mk
+	// go test -v -run TestName_2024_01_09_14_59_43/3.write_nil_chan github.com/gainovel/testcase/stdlib/runtime/chan
 	t.Run("3.write nil chan", func(t *testing.T) {
 		go sleepG()
 		var (
@@ -144,7 +144,7 @@ func TestName_2024_01_09_14_59_43(t *testing.T) {
 
 	// panic的情况有两种，①向关闭的管道写数据会触发panic②关闭已经关闭的管道
 
-	// make 001/1.write_to_a_closed_chan -f Makefiles/stdlib/runtime/chan.mk
+	// go test -v -run TestName_2024_01_09_14_59_43/1.write_to_a_closed_chan github.com/gainovel/testcase/stdlib/runtime/chan
 	// panic: send on closed channel
 	t.Run("1.write to a closed chan", func(t *testing.T) {
 		var (
@@ -154,7 +154,7 @@ func TestName_2024_01_09_14_59_43(t *testing.T) {
 		close(ch1)
 		ch1 <- 1
 	})
-	// make 001/2.close_a_closed_chan -f Makefiles/stdlib/runtime/chan.mk
+	// go test -v -run TestName_2024_01_09_14_59_43/2.close_a_closed_chan github.com/gainovel/testcase/stdlib/runtime/chan
 	// panic: close of closed channel
 	t.Run("2.close a closed chan", func(t *testing.T) {
 		var (
@@ -169,7 +169,7 @@ func TestName_2024_01_09_14_59_43(t *testing.T) {
 	// 使用逗号模式(val,ok := <-ch1)从管道中读取数据，ok为bool类型，表示是否读取到数据
 	// 管道关闭&管道缓冲区中无数据 ⇌ ok为false；管道关闭后读取管道需通过ok判断本次是否读取到数据，以防返回零值，误操作
 
-	// make 001/read_from_a_close_chan -f Makefiles/stdlib/runtime/chan.mk
+	// go test -v -run TestName_2024_01_09_14_59_43/read_from_a_close_chan github.com/gainovel/testcase/stdlib/runtime/chan
 	t.Run("read from a close chan", func(t *testing.T) {
 		var (
 			ch1 chan int
@@ -202,6 +202,17 @@ func TestName_2024_01_09_14_59_43(t *testing.T) {
 // qmemcodeend
 
 // qmemoutputstart
+//**************************************************************************************
+//* 测试用例运行方法：
+//*  0.前置要求：安装go最新版，安装make（可选）
+//*  1.git clone git@gitee.com:gainovel/go-test-case.git 👉 cd go-test-case
+//*    👉 cd testdoc/stdlib/runtime/chan.md
+//*    👉 找到对应的命令依次复制执行即可（回到根目录（go-test-case）执行）
+//*  2.或者直接打开测试文件stdlib/runtime/chan/features_usages_001_test.go，
+//*    每个子测试上都有对应的命令，直接执行即可（回到根目录（go-test-case）执行）
+//*  3. ❗ 注意：所有命令都在根目录下执行
+//**************************************************************************************
+//
 //🏳️‍🌈
 //**************************************************************************************
 //*  Test Command: make 001/chan_crud -f Makefiles/stdlib/runtime/chan.mk
