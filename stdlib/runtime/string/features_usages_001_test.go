@@ -14,7 +14,7 @@ package string
 import (
 	"testing"
 
-	commonprint "gainovel.com/go/testcase/tools/common/print"
+	commonprint "github.com/gainovel/testcase/tools/common/print"
 )
 
 var (
@@ -22,7 +22,7 @@ var (
 )
 
 func TestName_2024_01_10_17_38_02(t *testing.T) {
-	// go test -run TestName_2024_01_10_17_38_02/string_to_bytes_or_runes
+	// go test -v -run TestName_2024_01_10_17_38_02/string_to_bytes_or_runes
 	t.Run("string to bytes or runes", func(t *testing.T) {
 		var (
 			str1  string

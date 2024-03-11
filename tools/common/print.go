@@ -13,7 +13,7 @@ package commontools
 
 import (
 	"fmt"
-	commonconsts "gainovel.com/go/testcase/consts/common"
+	commonconsts "github.com/gainovel/testcase/consts/common"
 
 	"github.com/fatih/color"
 )

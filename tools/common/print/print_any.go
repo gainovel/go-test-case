@@ -17,7 +17,7 @@ import (
 	"github.com/gookit/color"
 	"github.com/gookit/goutil/dump"
 
-	commontools "gainovel.com/go/testcase/tools/common"
+	commontools "github.com/gainovel/testcase/tools/common"
 )
 
 var (
@@ -31,7 +31,7 @@ type myFmt struct {
 
 func newMyFmt() *myFmt {
 	return &myFmt{
-		horizontal: commontools.GenerateHorizontalLine(88),
+		horizontal: commontools.GenerateHorizontalLine(HORIZONTAL_LEN),
 		dumpStd2:   dump.Std2(),
 	}
 }
@@ -52,7 +52,7 @@ func (mf *myFmt) VarInitPrintln(a any) {
 	if a == nil {
 		fmt.Println()
 	}
-	color.HiCyan.Printf("%s 变量初始化：\n", "👇")
+	color.HiCyan.Printf("%s\n变量初始化：\n", "👇")
 	fmt.Println(mf.horizontal)
 	color.HiGreen.Printf("%v\n", a)
 	fmt.Println(mf.horizontal)

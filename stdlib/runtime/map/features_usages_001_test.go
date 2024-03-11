@@ -14,7 +14,7 @@ package map000
 import (
 	"testing"
 
-	commonprint "gainovel.com/go/testcase/tools/common/print"
+	commonprint "github.com/gainovel/testcase/tools/common/print"
 )
 
 var (
@@ -23,13 +23,13 @@ var (
 
 func TestName_2024_01_10_11_22_46(t *testing.T) {
 	// 多协程同时写会报错concurrent map writes
-	// go test -run TestName_2024_01_10_11_22_46/concurrent_map_write
+	// go test -v -run TestName_2024_01_10_11_22_46/concurrent_map_write
 	t.Run("concurrent map write", func(t *testing.T) {
 		// 使用windows terminal 在./cmd/main.go测试ConcurrentMapWrites()
 		ConcurrentMapWrites()
 	})
 	// panic的情况👉给nil map添加key-value
-	// go test -run TestName_2024_01_10_11_22_46/assignment_to_entry_in_nil_map
+	// go test -v -run TestName_2024_01_10_11_22_46/assignment_to_entry_in_nil_map
 	t.Run("assignment to entry in nil map", func(t *testing.T) {
 		var (
 			m1 map[int]int
@@ -40,7 +40,7 @@ func TestName_2024_01_10_11_22_46(t *testing.T) {
 	// map 的简单使用
 	// 使用内置函数delete()进行删除
 	// 查询map时，使用逗号模式(val,ok)获取值，避免操作零值，ok表示key是否存在
-	// go test -run TestName_2024_01_10_11_22_46/map_crud
+	// go test -v -run TestName_2024_01_10_11_22_46/map_crud
 	t.Run("map crud", func(t *testing.T) {
 		var (
 			m1  map[int]int

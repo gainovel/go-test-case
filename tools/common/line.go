@@ -12,7 +12,7 @@
 package commontools
 
 import (
-	commonconsts "gainovel.com/go/testcase/consts/common"
+	commonconsts "github.com/gainovel/testcase/consts/common"
 )
 
 func GenerateStarLine(n int) string {

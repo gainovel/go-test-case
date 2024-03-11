@@ -11,7 +11,7 @@
 
 package main
 
-import map000 "gainovel.com/go/testcase/stdlib/runtime/map"
+import map000 "github.com/gainovel/testcase/stdlib/runtime/map"
 
 func main() {
 	//map000.ConcurrentMapReads()

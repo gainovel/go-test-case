@@ -15,7 +15,7 @@ import (
 	"fmt"
 	"testing"
 
-	commonprint "gainovel.com/go/testcase/tools/common/print"
+	commonprint "github.com/gainovel/testcase/tools/common/print"
 )
 
 var (
@@ -23,8 +23,7 @@ var (
 )
 
 func TestName_2024_01_15_11_16_48(t *testing.T) {
-	// go test -run TestName_2024_01_15_11_16_48/case1
-
+	// go test -v -run TestName_2024_01_15_11_16_48/case1
 	t.Run("case1", func(t *testing.T) {
 		//	myfmt.DumpPrintln(`for i := 0; i < 3; i++ {
 		//fmt.Printf("%p", &i)

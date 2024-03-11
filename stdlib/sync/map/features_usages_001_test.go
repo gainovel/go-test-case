@@ -9,17 +9,17 @@
  * @Description  : 开发中···
  **/
 
-package _map
+package syncmap000
 
 import (
 	"fmt"
-	commontools "gainovel.com/go/testcase/tools/common"
+	commontools "github.com/gainovel/testcase/tools/common"
 	"sync"
 	"testing"
 )
 
 func TestName_2024_01_11_16_18_49(t *testing.T) {
-	//  go test -run TestName_2024_01_11_16_18_49/sync.Map_1
+	//  go test -v -run TestName_2024_01_11_16_18_49/sync.Map_1
 	t.Run("sync.Map 1", func(t *testing.T) {
 		var (
 			m1   sync.Map
@@ -49,7 +49,7 @@ func TestName_2024_01_11_16_18_49(t *testing.T) {
 		})
 		commontools.PrintAll(true, "m1.Delete(\"Jim\")", "sync.Map m1 status", "", "sync.Map m1", temp)
 	})
-	// go test -run TestName_2024_01_11_16_18_49/sync.Map.LoadOrStore
+	// go test -v -run TestName_2024_01_11_16_18_49/sync.Map.LoadOrStore
 	t.Run("sync.Map.LoadOrStore", func(t *testing.T) {
 		var (
 			m1     sync.Map
@@ -81,7 +81,7 @@ func TestName_2024_01_11_16_18_49(t *testing.T) {
 		actual, loaded = m1.LoadOrStore("Jim", 81)
 		commontools.PrintAll(true, "m1.LoadOrStore(\"Jim\", 81)", "LoadOrStore Result", "", "actual", actual, "loaded", loaded)
 	})
-	// go test -run TestName_2024_01_11_16_18_49/sync.Map.LoadAndDelete
+	// go test -v -run TestName_2024_01_11_16_18_49/sync.Map.LoadAndDelete
 	t.Run("sync.Map.LoadAndDelete", func(t *testing.T) {
 		var (
 			m1     sync.Map

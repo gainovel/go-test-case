@@ -1,4 +1,4 @@
-module gainovel.com/go/testcase
+module github.com/gainovel/testcase
 
 go 1.20
 
@@ -10,6 +10,8 @@ require (
 	github.com/golang-module/carbon/v2 v2.3.4
 	github.com/gookit/color v1.5.4
 	github.com/gookit/goutil v0.6.15
+	github.com/olekukonko/tablewriter v0.0.5
+	github.com/rabbitmq/amqp091-go v1.9.0
 	github.com/stretchr/testify v1.8.4
 	golang.org/x/crypto v0.14.0
 	gorm.io/driver/mysql v1.5.2
@@ -36,6 +38,7 @@ require (
 	github.com/leodido/go-urn v1.2.4 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
+	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.1.0 // indirect

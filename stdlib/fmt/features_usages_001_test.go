@@ -15,7 +15,7 @@ import (
 	"fmt"
 	"testing"
 
-	commonprint "gainovel.com/go/testcase/tools/common/print"
+	commonprint "github.com/gainovel/testcase/tools/common/print"
 )
 
 var (
